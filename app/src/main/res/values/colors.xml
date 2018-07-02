@@ -10,5 +10,8 @@
 
     <color name="colorBlack">#222222</color>
     <color name="colorGrey400">#bdbdbd</color>
+    <color name="colorGrey700">#616161</color>
+    <color name="colorNumber">#DADADA</color>
+    <color name="colorOperator">#F69131</color>
 
 </resources>

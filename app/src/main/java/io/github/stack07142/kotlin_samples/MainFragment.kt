@@ -1,11 +1,11 @@
-package io.github.stack07142.kotlin_samples.fragments
+package io.github.stack07142.kotlin_samples
 
 import android.app.Fragment
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import io.github.stack07142.kotlin_samples.R
+import io.github.stack07142.kotlin_samples.calculator.CalculatorFragment
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment() {

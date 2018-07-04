@@ -2,6 +2,7 @@ package io.github.stack07142.kotlin_samples.calculator
 
 import android.app.Fragment
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +16,7 @@ class CalculatorFragment : Fragment() {
     private lateinit var calc: View.OnClickListener
     private lateinit var delete: View.OnClickListener
     private lateinit var clear: View.OnLongClickListener
+    private var isEditMode: Boolean = true
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_calculator, container, false)
@@ -48,33 +50,50 @@ class CalculatorFragment : Fragment() {
     private fun initCalculator() {
         inputNumber = View.OnClickListener {
             val inputText = (it as Button).text
-            result_view.append(inputText)
+
+            if (isEditMode) {
+                result_view.append(inputText)
+            } else {
+                isEditMode = true
+                result_view.text = ""
+                result_view.append(inputText)
+            }
         }
 
         inputOperator = View.OnClickListener {
+            isEditMode = true
             val inputText = (it as Button).text
             val lastIdx = result_view.text.lastIndex
             val lastChar = result_view.text.last()
 
             if (isOperator(lastChar)) {
-                result_view.text = result_view.text.replaceRange(lastIdx..lastIdx, inputText)
+                result_view.text = result_view.text.replaceRange(lastIdx - 2..lastIdx, " $inputText ")
             } else {
                 result_view.append(" $inputText ")
             }
         }
 
         delete = View.OnClickListener {
-            result_view.text = result_view.text.dropLast(1)
+            if (isEditMode) {
+                result_view.text = result_view.text.dropLast(1)
+            } else {
+                isEditMode = true
+                result_view.text = ""
+            }
         }
 
         clear = View.OnLongClickListener {
+            isEditMode = true
             result_view.text = ""
             true
         }
 
         calc = View.OnClickListener {
+            isEditMode = false
             val expression = result_view.text.split(" ")
+            Log.d("CalculatorFragment", "expression= $expression")
             val result = Calculator.calc(expression)
+            Log.d("CalculatorFragment", "result= $result")
 
             if (isInteger(result)) {
                 result_view.text = result.toInt().toString()

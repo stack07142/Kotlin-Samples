@@ -1,6 +1,7 @@
 package io.github.stack07142.kotlin_samples.calculator
 
 import android.util.Log
+import timber.log.Timber
 import java.util.*
 
 object Calculator : Stack<Any>() {
@@ -49,7 +50,7 @@ object Calculator : Stack<Any>() {
             postfixExpression.add(pop() as String)
         }
 
-        Log.d("Calculator", "postfixExpression= $postfixExpression")
+        Timber.d("postfixExpression= $postfixExpression")
         return postfixExpression
     }
 

@@ -2,13 +2,13 @@ package io.github.stack07142.kotlin_samples.calculator
 
 import android.app.Fragment
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import io.github.stack07142.kotlin_samples.R
 import kotlinx.android.synthetic.main.fragment_calculator.*
+import timber.log.Timber
 
 class CalculatorFragment : Fragment() {
     private lateinit var inputNumber: View.OnClickListener
@@ -54,22 +54,27 @@ class CalculatorFragment : Fragment() {
             if (isEditMode) {
                 result_view.append(inputText)
             } else {
-                isEditMode = true
-                result_view.text = ""
+                clear()
                 result_view.append(inputText)
             }
         }
 
         inputOperator = View.OnClickListener {
-            isEditMode = true
-            val inputText = (it as Button).text
-            val lastIdx = result_view.text.lastIndex
-            val lastChar = result_view.text.last()
+            if (!result_view.text.isEmpty()) {
+                val inputText = (it as Button).text
+                val lastIdx = result_view.text.lastIndex
+                val lastChar = result_view.text.last()
 
-            if (isOperator(lastChar)) {
-                result_view.text = result_view.text.replaceRange(lastIdx - 2..lastIdx, " $inputText ")
-            } else {
-                result_view.append(" $inputText ")
+                if (!isLastNumber(lastChar)) {
+                    if (isEditMode) {
+                        result_view.text = result_view.text.replaceRange(lastIdx - 2..lastIdx, " $inputText ")
+                    } else {
+                        clear()
+                    }
+                } else {
+                    result_view.append(" $inputText ")
+                }
+                isEditMode = true
             }
         }
 
@@ -77,37 +82,49 @@ class CalculatorFragment : Fragment() {
             if (isEditMode) {
                 result_view.text = result_view.text.dropLast(1)
             } else {
-                isEditMode = true
-                result_view.text = ""
+                clear()
             }
         }
 
         clear = View.OnLongClickListener {
-            isEditMode = true
-            result_view.text = ""
+            clear()
             true
         }
 
         calc = View.OnClickListener {
             isEditMode = false
-            val expression = result_view.text.split(" ")
-            Log.d("CalculatorFragment", "expression= $expression")
+            val expression = trim(result_view.text).split(" ")
+            Timber.d("expression= $expression")
             val result = Calculator.calc(expression)
-            Log.d("CalculatorFragment", "result= $result")
+            Timber.d("result= $result")
 
-            if (isInteger(result)) {
-                result_view.text = result.toInt().toString()
-            } else {
-                result_view.text = result.toString()
+            when {
+                result.isInfinite() -> result_view.text = getString(R.string.inf)
+                result.isNaN() -> result_view.text = getString(R.string.nan)
+                isInteger(result) -> result_view.text = result.toInt().toString()
+                else -> result_view.text = result.toString()
             }
         }
     }
 
-    private fun isOperator(c: Char): Boolean {
-        return c !in '0'..'9'
+    private fun isLastNumber(c: Char): Boolean {
+        return c in '0'..'9'
     }
 
     private fun isInteger(num: Double): Boolean {
         return num % 1 == 0.0
+    }
+
+    private fun trim(expression: CharSequence): CharSequence {
+        var trimmed = expression
+        while (!isLastNumber(trimmed.last())) {
+            trimmed = trimmed.dropLast(1)
+        }
+        return trimmed
+    }
+
+    private fun clear() {
+        result_view.text = ""
+        isEditMode = true
     }
 }

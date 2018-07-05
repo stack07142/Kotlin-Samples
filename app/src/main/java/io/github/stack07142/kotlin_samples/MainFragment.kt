@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import io.github.stack07142.kotlin_samples.calculator.CalculatorFragment
+import io.github.stack07142.kotlin_samples.thread_comm_pipe.PipeFragment
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : Fragment() {
@@ -17,6 +18,7 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         btn_calculator.setOnClickListener { onClick(CalculatorFragment()) }
+        btn_thread_comm_pipe.setOnClickListener { onClick(PipeFragment()) }
     }
 
     private fun onClick(fragment: Fragment) {

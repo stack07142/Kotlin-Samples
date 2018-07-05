@@ -1,6 +1,5 @@
 package io.github.stack07142.kotlin_samples.calculator
 
-import android.util.Log
 import timber.log.Timber
 import java.util.*
 

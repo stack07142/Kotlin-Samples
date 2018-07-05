@@ -1,21 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.constraint.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
 
         <Button
-            style="@style/Button"
             android:id="@+id/btn_calculator"
-            android:layout_marginStart="8dp"
+            style="@style/Button"
             android:layout_marginTop="8dp"
-            android:text="Calculator"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:text="Calculator" />
 
-    </android.support.constraint.ConstraintLayout>
+        <Button
+            android:id="@+id/btn_thread_comm_pipe"
+            style="@style/Button"
+            android:layout_marginTop="8dp"
+            android:text="Thread Communication with pipe" />
+
+    </LinearLayout>
 </ScrollView>

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import io.github.stack07142.kotlin_samples.calculator.CalculatorFragment
 import io.github.stack07142.kotlin_samples.thread_comm_pipe.PipeFragment
 import kotlinx.android.synthetic.main.fragment_main.*
+import timber.log.Timber
 
 class MainFragment : Fragment() {
 

@@ -2,11 +2,10 @@ package io.github.stack07142.kotlin_samples.calculator
 
 import android.app.Fragment
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Button
 import io.github.stack07142.kotlin_samples.R
+import io.github.stack07142.kotlin_samples.R.id.*
 import kotlinx.android.synthetic.main.fragment_calculator.*
 import timber.log.Timber
 
@@ -25,6 +24,7 @@ class CalculatorFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        setHasOptionsMenu(true)
         initCalculator()
 
         btn_0.setOnClickListener(inputNumber)
@@ -126,5 +126,24 @@ class CalculatorFragment : Fragment() {
     private fun clear() {
         result_view.text = ""
         isEditMode = true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater?.inflate(R.menu.menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+       return when(item?.itemId) {
+            R.id.menu_history -> {
+                activity.fragmentManager
+                        .beginTransaction()
+                        .addToBackStack(tag)
+                        .replace(android.R.id.content, CalculatorHistoryFragment(), tag)
+                        .commit()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 }

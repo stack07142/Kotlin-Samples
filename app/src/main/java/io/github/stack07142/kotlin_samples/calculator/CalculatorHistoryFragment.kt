@@ -1,17 +1,27 @@
 package io.github.stack07142.kotlin_samples.calculator
 
 import android.app.Fragment
-import android.content.Context.MODE_PRIVATE
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import io.github.stack07142.kotlin_samples.R
+import timber.log.Timber
 
-const val CALC_PREFERENCE = "CALC_PREFERENCE"
-class CalculatorHistoryFragment: Fragment() {
-    private lateinit var preference: SharedPreferences
+class CalculatorHistoryFragment : Fragment() {
+    companion object {
+        private const val ARG_HISTORY = "history"
+
+        fun newInstance(history: List<String>?): CalculatorHistoryFragment {
+            val args = Bundle()
+            args.putStringArrayList(ARG_HISTORY, ArrayList(history))
+            val fragment = CalculatorHistoryFragment()
+            fragment.arguments = args
+            return fragment
+        }
+    }
+
+    private lateinit var history: List<String>
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_calculator_history, container, false)
@@ -20,6 +30,7 @@ class CalculatorHistoryFragment: Fragment() {
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        preference = activity.applicationContext.getSharedPreferences(CALC_PREFERENCE, MODE_PRIVATE)
+        history = arguments.getStringArrayList(ARG_HISTORY)
+        Timber.d(history.toString())
     }
 }

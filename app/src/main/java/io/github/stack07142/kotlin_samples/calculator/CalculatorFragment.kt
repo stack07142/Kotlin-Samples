@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.*
 import android.widget.Button
 import io.github.stack07142.kotlin_samples.R
-import io.github.stack07142.kotlin_samples.R.id.*
 import kotlinx.android.synthetic.main.fragment_calculator.*
 import timber.log.Timber
 
@@ -16,6 +15,7 @@ class CalculatorFragment : Fragment() {
     private lateinit var delete: View.OnClickListener
     private lateinit var clear: View.OnLongClickListener
     private var isEditMode: Boolean = true
+    private val history = mutableListOf<String>()
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater?.inflate(R.layout.fragment_calculator, container, false)
@@ -93,17 +93,22 @@ class CalculatorFragment : Fragment() {
 
         calc = View.OnClickListener {
             isEditMode = false
+            history.add(result_view.text.toString())
+
             val expression = trim(result_view.text).split(" ")
             Timber.d("expression= $expression")
             val result = Calculator.calc(expression)
             Timber.d("result= $result")
 
-            when {
-                result.isInfinite() -> result_view.text = getString(R.string.inf)
-                result.isNaN() -> result_view.text = getString(R.string.nan)
-                isInteger(result) -> result_view.text = result.toInt().toString()
-                else -> result_view.text = result.toString()
+            val refinedResult = when {
+                result.isInfinite() -> getString(R.string.inf)
+                result.isNaN() -> getString(R.string.nan)
+                isInteger(result) -> result.toInt().toString()
+                else -> result.toString()
             }
+
+            history.add(getString(R.string.calc_result_format, refinedResult))
+            result_view.text = refinedResult
         }
     }
 
@@ -126,6 +131,7 @@ class CalculatorFragment : Fragment() {
     private fun clear() {
         result_view.text = ""
         isEditMode = true
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
@@ -139,7 +145,7 @@ class CalculatorFragment : Fragment() {
                 activity.fragmentManager
                         .beginTransaction()
                         .addToBackStack(tag)
-                        .replace(android.R.id.content, CalculatorHistoryFragment(), tag)
+                        .replace(android.R.id.content, CalculatorHistoryFragment.newInstance(history), tag)
                         .commit()
                 true
             }

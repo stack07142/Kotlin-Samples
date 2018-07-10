@@ -1,9 +1,7 @@
 package io.github.stack07142.kotlin_samples
 
 import android.os.Bundle
-import android.support.annotation.RequiresApi
 import android.support.v7.app.AppCompatActivity
-import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
 

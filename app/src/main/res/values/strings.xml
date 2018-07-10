@@ -2,5 +2,4 @@
     <string name="app_name">Kotlin-Samples</string>
     <string name="inf">INF</string>
     <string name="nan">NaN</string>
-    <string name="calc_result_format">= %s</string>
 </resources>

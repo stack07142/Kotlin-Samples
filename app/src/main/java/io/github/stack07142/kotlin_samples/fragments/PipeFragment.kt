@@ -1,4 +1,4 @@
-package io.github.stack07142.kotlin_samples.thread_comm_pipe
+package io.github.stack07142.kotlin_samples.fragments
 
 import android.app.Fragment
 import android.os.Bundle
@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import io.github.stack07142.kotlin_samples.R
+import io.github.stack07142.kotlin_samples.R.id.btn_flush
+import io.github.stack07142.kotlin_samples.R.id.editText
 import kotlinx.android.synthetic.main.fragment_pipe.*
 import timber.log.Timber
 import java.io.IOException

@@ -21,5 +21,11 @@
             android:layout_marginTop="8dp"
             android:text="Thread Communication with pipe" />
 
+        <Button
+            android:id="@+id/btn_java_test"
+            style="@style/Button"
+            android:layout_marginTop="8dp"
+            android:text="Scheduled Future" />
+
     </LinearLayout>
 </ScrollView>

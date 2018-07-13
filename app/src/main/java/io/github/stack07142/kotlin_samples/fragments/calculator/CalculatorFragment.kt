@@ -1,30 +1,25 @@
-package io.github.stack07142.kotlin_samples.calculator
+package io.github.stack07142.kotlin_samples.fragments.calculator
 
 import android.app.Fragment
 import android.app.NotificationManager
-import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import android.support.v4.app.NotificationCompat
-import android.support.v4.app.TaskStackBuilder
 import android.support.v4.content.LocalBroadcastManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import io.github.stack07142.kotlin_samples.MainActivity
 import io.github.stack07142.kotlin_samples.R
-import kotlinx.android.synthetic.main.fragment_calculator.*
 import timber.log.Timber
 import android.app.NotificationChannel
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.disposables.Disposable
-import java.lang.Math.random
 import java.util.concurrent.TimeUnit
 
 

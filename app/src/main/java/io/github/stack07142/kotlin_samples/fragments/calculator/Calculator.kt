@@ -1,4 +1,4 @@
-package io.github.stack07142.kotlin_samples.calculator
+package io.github.stack07142.kotlin_samples.fragments.calculator
 
 import timber.log.Timber
 import java.util.*

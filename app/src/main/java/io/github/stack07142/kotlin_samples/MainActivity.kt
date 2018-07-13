@@ -3,6 +3,13 @@ package io.github.stack07142.kotlin_samples
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 
+/**
+ * Kotlin
+ * - operator
+ * - inline
+ * - sealed
+ * - out, in ..
+ */
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
  * - inline
  * - sealed
  * - out, in ..
+ * - reified
  */
 class MainActivity : AppCompatActivity() {
 

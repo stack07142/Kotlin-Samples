@@ -27,5 +27,11 @@
             android:layout_marginTop="8dp"
             android:text="Scheduled Future" />
 
+        <Button
+            android:id="@+id/btn_ble"
+            style="@style/Button"
+            android:layout_marginTop="8dp"
+            android:text="BLE" />
+
     </LinearLayout>
 </ScrollView>

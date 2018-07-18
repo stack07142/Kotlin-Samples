@@ -39,5 +39,11 @@
             android:layout_marginTop="8dp"
             android:text="Variance" />
 
+        <Button
+            android:id="@+id/btn_inline"
+            style="@style/Button"
+            android:layout_marginTop="8dp"
+            android:text="Inline" />
+
     </LinearLayout>
 </ScrollView>

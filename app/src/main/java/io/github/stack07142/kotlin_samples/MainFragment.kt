@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import io.github.stack07142.kotlin_samples.fragments.InlineFragment
 import io.github.stack07142.kotlin_samples.fragments.PipeFragment
 import io.github.stack07142.kotlin_samples.fragments.ScheduledFutureFragment
 import io.github.stack07142.kotlin_samples.fragments.VarianceFragment
@@ -25,6 +26,7 @@ class MainFragment : Fragment() {
         btn_java_test.setOnClickListener { onClick(ScheduledFutureFragment()) }
         btn_ble.setOnClickListener { onClick(BTFragment()) }
         btn_variance.setOnClickListener { onClick(VarianceFragment()) }
+        btn_inline.setOnClickListener { onClick(InlineFragment()) }
     }
 
     private fun onClick(fragment: Fragment) {

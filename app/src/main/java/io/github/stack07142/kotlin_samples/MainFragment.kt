@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import io.github.stack07142.kotlin_samples.fragments.PipeFragment
 import io.github.stack07142.kotlin_samples.fragments.ScheduledFutureFragment
+import io.github.stack07142.kotlin_samples.fragments.VarianceFragment
 import io.github.stack07142.kotlin_samples.fragments.bluetooth.BTFragment
 import io.github.stack07142.kotlin_samples.fragments.calculator.CalculatorFragment
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -23,6 +24,7 @@ class MainFragment : Fragment() {
         btn_thread_comm_pipe.setOnClickListener { onClick(PipeFragment()) }
         btn_java_test.setOnClickListener { onClick(ScheduledFutureFragment()) }
         btn_ble.setOnClickListener { onClick(BTFragment()) }
+        btn_variance.setOnClickListener { onClick(VarianceFragment()) }
     }
 
     private fun onClick(fragment: Fragment) {

@@ -10,16 +10,16 @@ import io.github.stack07142.kotlin_samples.R
 import org.apache.commons.lang3.concurrent.BasicThreadFactory
 import timber.log.Timber
 import java.util.concurrent.Executors
-import java.util.concurrent.Future
+import java.util.concurrent.ScheduledFuture
 import java.util.concurrent.ThreadFactory
 import java.util.concurrent.TimeUnit
 
 class ScheduledFutureFragment : Fragment() {
 
-    private var future: Future<*>? = null
+    private var future: ScheduledFuture<*>? = null
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle): View? {
-        return inflater.inflate(R.layout.fragment_scheduled_future, container, false)
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater?.inflate(R.layout.fragment_scheduled_future, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -31,8 +31,8 @@ class ScheduledFutureFragment : Fragment() {
                 Timber.d(">>>>>>>>>>>>>>>>>thread sleep-start")
                 Thread.sleep(2000)
                 Timber.d("<<<<<<<<<<<<<<<<<thread sleep-stop")
-                Timber.d("future.isDone()= " + if (future == null) "null" else future!!.isDone)
-                Timber.d("future.isCancelled()= " + if (future == null) "null" else future!!.isCancelled)
+                Timber.d("future.isDone()= %s", if (future == null) "null" else future!!.isDone)
+                Timber.d("future.isCancelled()= %s", if (future == null) "null" else future!!.isCancelled)
             } catch (e: Exception) {
                 e.printStackTrace()
             }
@@ -55,9 +55,9 @@ class ScheduledFutureFragment : Fragment() {
 
     private fun cancel() {
         if (future != null) {
-            Timber.d("clickListener:: future.cancel(false)= " + future!!.cancel(false))
-            Timber.d("clickListener:: future.isDone()= " + future!!.isDone)
-            Timber.d("clickListener:: future.isCancelled()= " + future!!.isCancelled)
+            Timber.d("clickListener:: future.cancel(false)= %s", future!!.cancel(false))
+            Timber.d("clickListener:: future.isDone()= %s", future!!.isDone)
+            Timber.d("clickListener:: future.isCancelled()= %s", future!!.isCancelled)
             future = null
         }
     }

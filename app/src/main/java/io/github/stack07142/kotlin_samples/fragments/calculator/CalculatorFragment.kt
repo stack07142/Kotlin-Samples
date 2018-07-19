@@ -1,6 +1,7 @@
 package io.github.stack07142.kotlin_samples.fragments.calculator
 
 import android.app.Fragment
+import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -14,12 +15,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import io.github.stack07142.kotlin_samples.R
-import timber.log.Timber
-import android.app.NotificationChannel
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.fragment_calculator.*
+import timber.log.Timber
 import java.util.concurrent.TimeUnit
 import kotlinx.android.synthetic.main.fragment_calculator.*
 

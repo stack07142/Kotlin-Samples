@@ -5,10 +5,11 @@ import android.support.v7.app.AppCompatActivity
 
 /**
  * Kotlin
- * - operator
  * - inline
- * - sealed
+ * - reified
  * - out, in ..
+ * - sealed
+ * - operator
  */
 class MainActivity : AppCompatActivity() {
 

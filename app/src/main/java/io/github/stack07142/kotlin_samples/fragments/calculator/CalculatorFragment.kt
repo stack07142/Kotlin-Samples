@@ -21,6 +21,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.disposables.Disposable
 import java.util.concurrent.TimeUnit
+import kotlinx.android.synthetic.main.fragment_calculator.*
 
 
 /**

@@ -5,10 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import io.github.stack07142.kotlin_samples.fragments.InlineFragment
-import io.github.stack07142.kotlin_samples.fragments.PipeFragment
-import io.github.stack07142.kotlin_samples.fragments.ScheduledFutureFragment
-import io.github.stack07142.kotlin_samples.fragments.VarianceFragment
+import io.github.stack07142.kotlin_samples.fragments.*
 import io.github.stack07142.kotlin_samples.fragments.bluetooth.BTFragment
 import io.github.stack07142.kotlin_samples.fragments.calculator.CalculatorFragment
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -27,6 +24,7 @@ class MainFragment : Fragment() {
         btn_ble.setOnClickListener { onClick(BTFragment()) }
         btn_variance.setOnClickListener { onClick(VarianceFragment()) }
         btn_inline.setOnClickListener { onClick(InlineFragment()) }
+        btn_dagger.setOnClickListener { onClick(CoffeeMakerFragment()) }
     }
 
     private fun onClick(fragment: Fragment) {

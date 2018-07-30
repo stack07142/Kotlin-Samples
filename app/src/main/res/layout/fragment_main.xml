@@ -45,5 +45,11 @@
             android:layout_marginTop="8dp"
             android:text="Inline" />
 
+        <Button
+            android:id="@+id/btn_dagger"
+            style="@style/Button"
+            android:layout_marginTop="8dp"
+            android:text="Dagger- Coffee Maker" />
+
     </LinearLayout>
 </ScrollView>

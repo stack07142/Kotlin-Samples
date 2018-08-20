@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         if (savedInstanceState == null) {
-            fragmentManager
+            supportFragmentManager
                     .beginTransaction()
                     .replace(android.R.id.content, MainFragment())
                     .commit()

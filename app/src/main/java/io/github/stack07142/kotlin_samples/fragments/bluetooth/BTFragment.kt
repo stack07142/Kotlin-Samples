@@ -1,9 +1,9 @@
 package io.github.stack07142.kotlin_samples.fragments.bluetooth
 
-import android.app.Fragment
 import android.bluetooth.BluetoothAdapter
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,8 +12,8 @@ import io.github.stack07142.kotlin_samples.R
 
 class BTFragment : Fragment() {
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater?.inflate(R.layout.fragment_ble, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_ble, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -26,7 +26,7 @@ class BTFragment : Fragment() {
 
         ap?.let {
             if (!it.isEnabled) {
-                activity.startActivityForResult(Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE), 5)
+                activity?.startActivityForResult(Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE), 5)
             }
         }
     }

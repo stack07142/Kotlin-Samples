@@ -1,13 +1,11 @@
 package io.github.stack07142.kotlin_samples.fragments
 
-import android.app.Fragment
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import io.github.stack07142.kotlin_samples.R
-import io.github.stack07142.kotlin_samples.R.id.btn_flush
-import io.github.stack07142.kotlin_samples.R.id.editText
 import kotlinx.android.synthetic.main.fragment_pipe.*
 import timber.log.Timber
 import java.io.IOException
@@ -23,8 +21,8 @@ class PipeFragment : Fragment() {
     // 1. setupPipe
     // 2. data transfer
     // 3. disconnection
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater?.inflate(R.layout.fragment_pipe, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_pipe, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

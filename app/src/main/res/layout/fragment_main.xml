@@ -51,5 +51,12 @@
             android:layout_marginTop="8dp"
             android:text="Dagger- Coffee Maker" />
 
+        <Button
+            android:id="@+id/btn_courtcounter"
+            style="@style/Button"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="ViewModel - Court Counter" />
+
     </LinearLayout>
 </ScrollView>

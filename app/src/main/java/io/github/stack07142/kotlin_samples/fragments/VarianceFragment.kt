@@ -1,7 +1,7 @@
 package io.github.stack07142.kotlin_samples.fragments
 
-import android.app.Fragment
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,8 +32,8 @@ class VarianceFragment : Fragment() {
         parameter.myAction()
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater?.inflate(R.layout.fragment_variance, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_variance, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

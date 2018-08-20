@@ -1,6 +1,5 @@
 package io.github.stack07142.kotlin_samples.fragments.calculator
 
-import android.app.Fragment
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.BroadcastReceiver
@@ -8,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v4.app.NotificationCompat
 import android.support.v4.content.LocalBroadcastManager
 import android.view.LayoutInflater
@@ -22,7 +22,6 @@ import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_calculator.*
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
-import kotlinx.android.synthetic.main.fragment_calculator.*
 
 
 /**
@@ -57,8 +56,8 @@ class CalculatorFragment : Fragment() {
     private var disposable: Disposable? = null
     private var incrementalNotiId = 0
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater?.inflate(R.layout.fragment_calculator, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_calculator, container, false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -91,13 +90,13 @@ class CalculatorFragment : Fragment() {
                 Timber.d("onReceive:: ${intent?.getStringExtra(CALC_RESULT)}")
             }
         }
-        LocalBroadcastManager.getInstance(activity).registerReceiver(broadcastReceiver, IntentFilter(SAVE_ACTION))
+        LocalBroadcastManager.getInstance(activity!!).registerReceiver(broadcastReceiver, IntentFilter(SAVE_ACTION))
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         disposable?.dispose()
-        LocalBroadcastManager.getInstance(activity).unregisterReceiver(broadcastReceiver)
+        LocalBroadcastManager.getInstance(activity!!).unregisterReceiver(broadcastReceiver)
     }
 
     private fun initCalculator() {
@@ -179,14 +178,14 @@ class CalculatorFragment : Fragment() {
                             val intent = Intent()
                             intent.action = SAVE_ACTION
                             intent.putExtra(CALC_RESULT, "longOperation-onComplete")
-                            LocalBroadcastManager.getInstance(activity).sendBroadcast(intent)
+                            LocalBroadcastManager.getInstance(activity!!).sendBroadcast(intent)
                         },
                         { _ -> Timber.d("onError") }
                 )
     }
 
     private fun sendNotification(msg: String) {
-        val notificationManager = activity.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        val notificationManager = activity?.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
@@ -200,7 +199,7 @@ class CalculatorFragment : Fragment() {
         //stackBuilder.addNextIntent(resultIntent)
         //val resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT)
 
-        val builder = NotificationCompat.Builder(activity, CHANNEL_ID)
+        val builder = NotificationCompat.Builder(activity!!, CHANNEL_ID)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentText(msg)
         //.setContentIntent(resultPendingIntent)

@@ -58,5 +58,12 @@
             android:layout_marginTop="8dp"
             android:text="ViewModel - Court Counter" />
 
+        <Button
+            android:id="@+id/btn_looper_thread"
+            style="@style/Button"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Looper, Thread, Message" />
+
     </LinearLayout>
 </ScrollView>

@@ -27,6 +27,7 @@ class MainFragment : Fragment() {
         btn_inline.setOnClickListener { onClick(InlineFragment()) }
         btn_dagger.setOnClickListener { onClick(CoffeeMakerFragment()) }
         btn_courtcounter.setOnClickListener { onClick(CourtCounterFragment()) }
+        btn_looper_thread.setOnClickListener { onClick(LooperThreadFragment()) }
     }
 
     private fun onClick(fragment: Fragment) {
